@@ -18,11 +18,7 @@ var options = {
 };
 
 
-
-var TimerTick = 1000 * 1;
-
-setTimeout(function () {
-    console.log('start post...');
+function PostTask() {
     for (var i = 0; i < 10; i++) {
         var req = http.request(options, function (res) {
             res.setEncoding('utf8');
@@ -33,10 +29,18 @@ setTimeout(function () {
                 console.log("body: " + chunk);
             })
         });
+        req.on('error', function (e) {
+            console.log(e.message);
+        });
         req.write(data);
         req.end();
     }
-    console.log('post end...');
+}
+
+var TimerTick = 1000 * 5;
+setInterval(function () {
+    console.log('start post...');
+    PostTask();
 }, TimerTick);
 
 
