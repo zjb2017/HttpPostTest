@@ -19,7 +19,7 @@ var options = {
 
 
 function PostTask() {
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 100; i++) {
         var req = http.request(options, function (res) {
             res.setEncoding('utf8');
             res.on('data', function (chunk) {
