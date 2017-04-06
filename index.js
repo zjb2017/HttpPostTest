@@ -19,23 +19,26 @@ var options = {
 
 
 
-for (var i = 0; i < 999; i++) {
+var TimerTick = 1000 * 1;
 
-    var req = http.request(options, function (res) {
-        res.setEncoding('utf8');
-        res.on('data', function (chunk) {
-            console.log("body: " + chunk);
+setTimeout(function () {
+    console.log('start post...');
+    for (var i = 0; i < 10; i++) {
+        var req = http.request(options, function (res) {
+            res.setEncoding('utf8');
+            res.on('data', function (chunk) {
+                console.log("body: " + chunk);
+            });
+            res.on('end', function (chunk) {
+                console.log("body: " + chunk);
+            })
         });
-        res.on('end', function (chunk) {
-            console.log("body: " + chunk);
-        })
-    });
+        req.write(data);
+        req.end();
+    }
+    console.log('post end...');
+}, TimerTick);
 
 
 
-    req.write(data);
-    req.end();
 
-    console.log("----");
-    console.log(i);
-}
