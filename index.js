@@ -2,14 +2,15 @@ var http = require('http');
 var querystring = require('querystring');
 //json转换为字符串
 var data = querystring.stringify({
-    ID: "5",
+    XM: "5",
+    XB:"女人",
     DZ: "南京"
 });
 var options = {
-    host: '127.0.0.1',
+    host: '115.29.103.128',
     //    host:'localhost',
     port: 1088,
-    path: '/?type=dl&act=getHYB',
+    path: '/?type=dl&act=user.InsertHYXX',
     method: 'POST',
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -19,7 +20,7 @@ var options = {
 
 
 function PostTask() {
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 500; i++) {
         var req = http.request(options, function (res) {
             res.setEncoding('utf8');
             res.on('data', function (chunk) {
